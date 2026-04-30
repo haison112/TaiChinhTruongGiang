@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Admin Panel</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="active" data-tab="leads">Quản lý Leads</a>
+            <a href="#" data-tab="content">Quản lý Nội dung</a>
+            <a href="/logout" class="logout-btn">Đăng xuất</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <!-- LEADS TAB -->
+        <section id="leads-tab" class="tab-content active">
+            <div class="header-action">
+                <h2>Danh sách Leads</h2>
+                <button id="exportBtn" class="btn btn-primary">Xuất Excel</button>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Nội dung</th>
+                            <th>Ngày gửi</th>
+                            <th>Trạng thái</th>
+                            <th>Ghi chú</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leadsTableBody">
+                        <!-- Render via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CONTENT TAB -->
+        <section id="content-tab" class="tab-content">
+            <h2>Quản lý Nội dung Landing Page</h2>
+            
+            <form id="contentForm" class="content-form">
+                <div class="form-section">
+                    <h3>Thương hiệu</h3>
+                    <div class="form-group">
+                        <label>Tên thương hiệu</label>
+                        <input type="text" name="brandName" value="<%= content.brandName || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Màu chữ thương hiệu</label>
+                        <input type="text" name="brandColor" value="<%= content.brandColor || '#4B5563' %>">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Hero Section</h3>
+                    <div class="form-group">
+                        <label>Headline (Tiêu đề chính)</label>
+                        <input type="text" name="heroHeadline" value="<%= content.heroHeadline || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Subheadline (Tiêu đề phụ)</label>
+                        <textarea name="heroSubheadline" rows="3"><%= content.heroSubheadline || '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Call to Action 1 (Nút chính)</label>
+                        <input type="text" name="heroCta1" value="<%= content.heroCta1 || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Call to Action 2 (Nút phụ)</label>
+                        <input type="text" name="heroCta2" value="<%= content.heroCta2 || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh Hero</label>
+                        <input type="text" name="heroImage" id="heroImage" value="<%= content.heroImage || '' %>" placeholder="/uploads/hero.png">
+                        <div class="upload-row">
+                            <input type="file" id="heroImageUpload" accept="image/*">
+                            <button type="button" class="btn upload-btn" data-file="heroImageUpload" data-target="heroImage">Upload ảnh</button>
+                        </div>
+                        <img src="<%= content.heroImage || '' %>" alt="" class="image-preview" id="heroImagePreview">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Banner ứng dụng</h3>
+                    <div class="form-group">
+                        <label>Tiêu đề banner</label>
+                        <input type="text" name="bannerTitle" value="<%= content.bannerTitle || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh Banner</label>
+                        <input type="text" name="bannerImage" id="bannerImage" value="<%= content.bannerImage || '' %>" placeholder="/uploads/banner.png">
+                        <div class="upload-row">
+                            <input type="file" id="bannerImageUpload" accept="image/*">
+                            <button type="button" class="btn upload-btn" data-file="bannerImageUpload" data-target="bannerImage">Upload ảnh</button>
+                        </div>
+                        <img src="<%= content.bannerImage || '' %>" alt="" class="image-preview" id="bannerImagePreview">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Cards và FAQ</h3>
+                    <div class="form-group">
+                        <label>Benefit Cards (JSON array)</label>
+                        <textarea name="benefitCards" rows="8"><%= content.benefitCards || '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Process Cards (JSON array)</label>
+                        <textarea name="processCards" rows="8"><%= content.processCards || '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>FAQ Items (JSON array)</label>
+                        <textarea name="faqItems" rows="8"><%= content.faqItems || '' %></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Thông tin Liên hệ (Zalo, Hotline)</h3>
+                    <div class="form-group">
+                        <label>Link Zalo</label>
+                        <input type="text" name="zaloUrl" value="<%= content.zaloUrl || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại Hotline</label>
+                        <input type="text" name="phoneNumber" value="<%= content.phoneNumber || '' %>">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Footer</h3>
+                    <div class="form-group">
+                        <label>Footer brand</label>
+                        <input type="text" name="footerBrand" value="<%= content.footerBrand || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Disclaimer</label>
+                        <textarea name="footerDisclaimer" rows="5"><%= content.footerDisclaimer || '' %></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Lưu Nội dung</button>
+            </form>
+            <div id="contentMessage" class="message"></div>
+        </section>
+    </main>
+</div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>

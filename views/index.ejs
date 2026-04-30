@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nền tảng giao dịch Forex & Prop Firm chuyên nghiệp cho Trader</title>
+    <meta name="description" content="Khám phá nền tảng giao dịch tài chính dành cho trader: điều kiện giao dịch minh bạch, công nghệ khớp lệnh nhanh, chương trình cấp vốn Prop Firm và hệ sinh thái hỗ trợ chuyên nghiệp.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <!-- <div class="header-left">
+                <nav class="desktop-nav">
+                    <a href="#products">Sản phẩm</a>
+                    <a href="#prop-firm">Prop Firm</a>
+                    <a href="#platform">Nền tảng</a>
+                </nav>
+            </div> -->
+            <div class="logo">
+                <span class="brand-text" style="color: <%= content.brandColor || '#4B5563' %>"><%= content.brandName || 'Trường Giang' %></span>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <a href="#" class="btn-text">Đăng nhập</a>
+                    <a href="#contact" class="btn btn-primary btn-sm">Bắt đầu giao dịch</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#products">Sản phẩm</a>
+        <a href="#prop-firm">Prop Firm</a>
+        <a href="#platform">Nền tảng</a>
+        <a href="#faq">FAQ</a>
+        <a href="#" class="btn btn-outline">Đăng nhập</a>
+        <a href="#contact" class="btn btn-primary">Bắt đầu giao dịch</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero section-animate">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <div class="eyebrow">Nền tảng giao dịch tài chính cho trader hiện đại</div>
+                <h1 class="hero-headline"><%= content.heroHeadline %></h1>
+                <p class="hero-subheadline"><%= content.heroSubheadline %></p>
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn btn-primary btn-lg"><%= content.heroCta1 || 'Bắt đầu giao dịch' %></a>
+                </div>
+                <p class="trust-microcopy">Mở tài khoản trong vòng 1 phút.</p>
+            </div>
+            <div class="hero-visual">
+                <% if (content.heroImage) { %>
+                <img src="<%= content.heroImage %>" alt="Nền tảng giao dịch <%= content.brandName || 'Trường Giang' %>" class="hero-image">
+                <% } else { %>
+                <div class="dashboard-mockup">
+                    <div class="mockup-header">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="chart-area">
+                            <svg viewBox="0 0 100 50" preserveAspectRatio="none" class="chart-line">
+                                <path d="M0,40 Q10,30 20,35 T40,20 T60,25 T80,10 T100,15" fill="none" stroke="#00d084" stroke-width="2"/>
+                                <path d="M0,40 Q10,30 20,35 T40,20 T60,25 T80,10 T100,15 L100,50 L0,50 Z" fill="url(#grad)" opacity="0.2"/>
+                                <defs>
+                                    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#00d084" stop-opacity="1" />
+                                        <stop offset="100%" stop-color="#00d084" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Benefits (Chips) -->
+    <section class="benefits bg-white">
+        <div class="container">
+            <div class="benefits-chips">
+                <% benefitCards.forEach(function(card) { %>
+                <div class="chip"><%= card.title %></div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust section-animate">
+        <div class="container">
+            <h2 class="section-title text-center">Được xây dựng cho sự minh bạch</h2>
+            <p class="section-desc text-center">Mọi điều kiện tài khoản, phí, quy tắc giao dịch và giới hạn rủi ro cần được trình bày công khai.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-num">50K+</div>
+                    <div class="stat-label">Trader Hoạt động</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">0.0</div>
+                    <div class="stat-label">Spread từ (pip)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">24/7</div>
+                    <div class="stat-label">Hỗ trợ Chuyên nghiệp</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">&lt;30ms</div>
+                    <div class="stat-label">Tốc độ Khớp lệnh</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products / Broker -->
+    <section id="products" class="products bg-white section-animate">
+        <div class="container">
+            <h2 class="section-title">Forex Broker Chuyên Nghiệp</h2>
+            <div class="products-inner">
+                <div class="product-info">
+                    <ul class="feature-list">
+                        <li>✅ Spread cạnh tranh</li>
+                        <li>✅ Đa dạng sản phẩm giao dịch (Forex, CFD, Crypto)</li>
+                        <li>✅ Tài khoản demo và live</li>
+                        <li>✅ Phù hợp cho trader có vốn cá nhân</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-4">Mở tài khoản giao dịch</a>
+                </div>
+                
+                <div class="pricing-table-wrapper">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Tiêu chí</th>
+                                <th>Standard</th>
+                                <th>Pro</th>
+                                <th>ECN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Spread</td>
+                                <td>Từ 1.0 pips</td>
+                                <td>Từ 0.5 pips</td>
+                                <td>Từ 0.0 pips</td>
+                            </tr>
+                            <tr>
+                                <td>Hoa hồng</td>
+                                <td>Không</td>
+                                <td>Theo điều kiện</td>
+                                <td>$3/lot</td>
+                            </tr>
+                            <tr>
+                                <td>Nền tảng</td>
+                                <td>MT5/Web/App</td>
+                                <td>MT5/cTrader</td>
+                                <td>MT5/cTrader</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prop Firm -->
+    <section id="prop-firm" class="prop-firm section-animate">
+        <div class="container">
+            <h2 class="section-title text-center">Chương Trình Cấp Vốn (Prop Firm)</h2>
+            <p class="section-desc text-center">Nhận vốn lên đến $200,000 khi vượt qua thử thách và chia sẻ lợi nhuận hấp dẫn.</p>
+            
+            <div class="cards-grid">
+                <div class="pricing-card">
+                    <h3>Challenge 1 Bước</h3>
+                    <div class="price">Phase duy nhất</div>
+                    <ul>
+                        <li>Mục tiêu lợi nhuận: 10%</li>
+                        <li>Max Drawdown: 6%</li>
+                        <li>Daily Drawdown: 4%</li>
+                        <li>Profit Split: 80%</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline full-width mt-4">Chọn gói này</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="badge">Phổ biến nhất</div>
+                    <h3>Challenge 2 Bước</h3>
+                    <div class="price">Đánh giá 2 Phase</div>
+                    <ul>
+                        <li>Mục tiêu lợi nhuận: 8% / 5%</li>
+                        <li>Max Drawdown: 10%</li>
+                        <li>Daily Drawdown: 5%</li>
+                        <li>Profit Split: Lên đến 90%</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary full-width mt-4">Chọn gói này</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Advanced</h3>
+                    <div class="price">Cho Pro Trader</div>
+                    <ul>
+                        <li>Không giới hạn thời gian</li>
+                        <li>Điều kiện linh hoạt</li>
+                        <li>Hỗ trợ 1-1</li>
+                        <li>Scale vốn theo lợi nhuận</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline full-width mt-4">Chọn gói này</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process bg-white section-animate">
+        <div class="container">
+            <h2 class="section-title text-center">Quy trình bắt đầu dễ dàng</h2>
+            
+            <div class="process-grid">
+                <% processCards.forEach(function(card, index) { %>
+                <div class="process-step">
+                    <div class="step-num"><%= index + 1 %></div>
+                    <h3><%= card.title %></h3>
+                    <p><%= card.description %></p>
+                </div>
+                <% }) %>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#contact" class="btn btn-primary btn-lg">Tạo tài khoản ngay</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Form -->
+    <section id="contact" class="contact-section section-animate">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-info">
+                    <h2 class="section-title">Nhận Tư Vấn Miễn Phí</h2>
+                    <p>Để lại thông tin, đội ngũ chuyên gia của chúng tôi sẽ liên hệ hỗ trợ bạn chọn tài khoản hoặc chương trình Prop Firm phù hợp nhất.</p>
+                    <ul class="contact-perks mt-4">
+                        <li>✓ Tư vấn 1-1 miễn phí</li>
+                        <li>✓ Giải đáp mọi thắc mắc về phí và spread</li>
+                        <li>✓ Hướng dẫn nền tảng chi tiết</li>
+                    </ul>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form id="leadForm" class="lead-form">
+                        <div class="form-group">
+                            <label>Họ và Tên *</label>
+                            <input type="text" name="name" required placeholder="Nhập họ tên của bạn">
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại *</label>
+                            <input type="tel" name="phone" required placeholder="Nhập số điện thoại">
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung tư vấn *</label>
+                            <textarea name="message" required maxlength="1000" placeholder="Nhập nội dung bạn cần tư vấn"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width" id="submitBtn">Nhận tư vấn ngay</button>
+                        <div id="formMsg" class="form-msg"></div>
+                        <p class="microcopy text-center mt-2">Thông tin của bạn chỉ được dùng để tư vấn dịch vụ phù hợp. Không chia sẻ dữ liệu cho bên thứ ba.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section bg-white section-animate">
+        <div class="container">
+            <h2 class="section-title text-center">Câu hỏi thường gặp</h2>
+            <div class="faq-list">
+                <% faqItems.forEach(function(item) { %>
+                <div class="faq-item">
+                    <h3><%= item.question %></h3>
+                    <p><%= item.answer %></p>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <div class="logo-text"><%= content.footerBrand || content.brandName || 'Trường Giang' %></div>
+                    <p class="mt-2">Nền tảng giao dịch tài chính minh bạch cho trader hiện đại.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Sản phẩm</h4>
+                    <a href="#">Forex Broker</a>
+                    <a href="#">Prop Firm Challenge</a>
+                    <a href="#">Nền tảng giao dịch</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <a href="#">Trung tâm trợ giúp</a>
+                    <a href="#">Liên hệ</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Pháp lý</h4>
+                    <a href="#">Điều khoản dịch vụ</a>
+                    <a href="#">Chính sách bảo mật</a>
+                    <a href="#">Cảnh báo rủi ro</a>
+                </div>
+            </div>
+            
+            <div class="footer-disclaimer mt-4">
+                <p><strong>Cảnh báo rủi ro:</strong> <%= content.footerDisclaimer || 'Giao dịch ngoại hối, CFD và các sản phẩm phái sinh có mức độ rủi ro cao và có thể không phù hợp với mọi nhà đầu tư.' %></p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 <%= content.footerBrand || content.brandName || 'Trường Giang' %>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-contact">
+        <a href="<%= content.zaloUrl %>" target="_blank" class="float-btn zalo-btn" title="Chat Zalo">
+            Zalo
+        </a>
+        <a href="tel:<%= content.phoneNumber %>" class="float-btn phone-btn" title="Gọi điện">
+            📞
+        </a>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
