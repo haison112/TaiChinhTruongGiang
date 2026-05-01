@@ -153,6 +153,31 @@
                     </div>
                 </div>
 
+                <div class="form-section">
+                    <h3>SEO & Tracking</h3>
+                    <div class="form-group">
+                        <label>SEO Title</label>
+                        <input type="text" name="seoTitle" value="<%= content.seoTitle || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>SEO Description</label>
+                        <textarea name="seoDescription" rows="3"><%= content.seoDescription || '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Open Graph Image (Hình ảnh chia sẻ MXH)</label>
+                        <input type="text" name="ogImage" id="ogImage" value="<%= content.ogImage || '' %>" placeholder="/uploads/og.png">
+                        <div class="upload-row">
+                            <input type="file" id="ogImageUpload" accept="image/*">
+                            <button type="button" class="btn upload-btn" data-file="ogImageUpload" data-target="ogImage">Upload ảnh</button>
+                        </div>
+                        <img src="<%= content.ogImage || '' %>" alt="" class="image-preview" id="ogImagePreview">
+                    </div>
+                    <div class="form-group">
+                        <label>Facebook Pixel ID</label>
+                        <input type="text" name="facebookPixelId" value="<%= content.facebookPixelId || '' %>" placeholder="123456789012345">
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Lưu Nội dung</button>
             </form>
             <div id="contentMessage" class="message"></div>

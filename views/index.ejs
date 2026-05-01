@@ -3,13 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nền tảng giao dịch Forex & Prop Firm chuyên nghiệp cho Trader</title>
-    <meta name="description" content="Khám phá nền tảng giao dịch tài chính dành cho trader: điều kiện giao dịch minh bạch, công nghệ khớp lệnh nhanh, chương trình cấp vốn Prop Firm và hệ sinh thái hỗ trợ chuyên nghiệp.">
+    <title><%= content.seoTitle || 'Nền tảng giao dịch Forex & Prop Firm chuyên nghiệp cho Trader' %></title>
+    <meta name="description" content="<%= content.seoDescription || 'Khám phá nền tảng giao dịch tài chính dành cho trader: điều kiện giao dịch minh bạch, công nghệ khớp lệnh nhanh, chương trình cấp vốn Prop Firm.' %>">
     
+    <link rel="canonical" href="<%= siteUrl %>/">
+    <meta name="robots" content="index,follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="<%= content.seoTitle || 'Nền tảng giao dịch Forex & Prop Firm chuyên nghiệp cho Trader' %>">
+    <meta property="og:description" content="<%= content.seoDescription || 'Khám phá nền tảng giao dịch tài chính dành cho trader: điều kiện giao dịch minh bạch, công nghệ khớp lệnh nhanh, chương trình cấp vốn Prop Firm.' %>">
+    <meta property="og:url" content="<%= siteUrl %>/">
+    <meta property="og:type" content="website">
+    <% if (content.ogImage) { %>
+    <meta property="og:image" content="<%= content.ogImage %>">
+    <% } %>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= content.seoTitle || 'Nền tảng giao dịch Forex & Prop Firm chuyên nghiệp cho Trader' %>">
+    <meta name="twitter:description" content="<%= content.seoDescription || 'Khám phá nền tảng giao dịch tài chính dành cho trader: điều kiện giao dịch minh bạch, công nghệ khớp lệnh nhanh, chương trình cấp vốn Prop Firm.' %>">
+    <% if (content.ogImage) { %>
+    <meta name="twitter:image" content="<%= content.ogImage %>">
+    <% } %>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "<%= content.brandName || 'Trường Giang' %>",
+      "url": "<%= siteUrl %>/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "<%= content.brandName || 'Trường Giang' %> Broker & Prop Firm",
+      "url": "<%= siteUrl %>/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        <% faqItems.forEach(function(item, index) { %>
+        {
+          "@type": "Question",
+          "name": "<%- item.question.replace(/"/g, '\\"') %>",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "<%- item.answer.replace(/"/g, '\\"') %>"
+          }
+        }<%= index < faqItems.length - 1 ? ',' : '' %>
+        <% }) %>
+      ]
+    }
+    </script>
+
+    <!-- Facebook Pixel -->
+    <% const activePixelId = content.facebookPixelId || envFbPixelId; %>
+    <% if (activePixelId) { %>
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '<%= activePixelId %>');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=<%= activePixelId %>&ev=PageView&noscript=1"
+    /></noscript>
+    <% } %>
 </head>
 <body>
 

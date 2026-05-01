@@ -11,6 +11,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === 'production';
 const sessionSecret = process.env.SESSION_SECRET || (!isProduction ? 'dev_session_secret_change_me' : null);
+const siteUrl = process.env.SITE_URL || 'http://localhost:3000';
+const envFbPixelId = process.env.FB_PIXEL_ID || '';
 
 if (!sessionSecret) {
   throw new Error('SESSION_SECRET is required in production.');
@@ -76,6 +78,10 @@ ensureAdminUser();
 
 // Default content
 const defaultContent = {
+  seoTitle: 'Nền tảng giao dịch Forex & Prop Firm chuyên nghiệp cho Trader',
+  seoDescription: 'Khám phá nền tảng giao dịch tài chính dành cho trader: điều kiện giao dịch minh bạch, công nghệ khớp lệnh nhanh, chương trình cấp vốn Prop Firm.',
+  ogImage: '',
+  facebookPixelId: '',
   brandName: 'Trường Giang',
   brandColor: '#4B5563',
   heroHeadline: 'Giao dịch Forex và tiếp cận tài khoản cấp vốn trên một hệ sinh thái minh bạch',
@@ -210,10 +216,30 @@ app.get('/', (req, res) => {
   const content = getAllContent();
   res.render('index', {
     content,
+    siteUrl,
+    envFbPixelId,
     benefitCards: parseJsonContent(content.benefitCards, JSON.parse(defaultContent.benefitCards)),
     processCards: parseJsonContent(content.processCards, JSON.parse(defaultContent.processCards)),
     faqItems: parseJsonContent(content.faqItems, JSON.parse(defaultContent.faqItems))
   });
+});
+
+// SEO Routes
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send(`User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml`);
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml');
+  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${siteUrl}/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`);
 });
 
 // Admin Authentication

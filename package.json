@@ -4,7 +4,9 @@
   "description": "Forex Broker & Prop Firm Landing Page",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "check": "node --check server.js"
   },
   "keywords": [],
   "author": "",

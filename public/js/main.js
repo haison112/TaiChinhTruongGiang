@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     formMsg.textContent = resData.message;
                     formMsg.className = 'form-msg success';
                     leadForm.reset();
+                    
+                    if (typeof fbq === 'function') {
+                        fbq('track', 'Lead');
+                    }
                 } else {
                     formMsg.textContent = resData.error || 'Có lỗi xảy ra, vui lòng thử lại sau.';
                     formMsg.className = 'form-msg error';
